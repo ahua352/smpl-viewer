@@ -52,18 +52,15 @@ function App() {
       });
       resizeObserver.observe(container);
 
-      const geometry = new THREE.BoxGeometry();
+      const geometry = new THREE.SphereGeometry(0.05, 20, 20);
       const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-      const cube = new THREE.Mesh(geometry, material);
-      scene.add(cube);
+      const point = new THREE.Mesh(geometry, material);
+      point.position.set(0, 0, 0);
+      scene.add(point);
 
       function animate() {
         requestAnimationFrame(animate);
-
         controls.update();
-        // cube.rotation.x += 0.01;
-        // cube.rotation.y += 0.01;
-
         renderer.render(scene, camera);
       }
 
