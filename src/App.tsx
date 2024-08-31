@@ -22,6 +22,18 @@ function App() {
       renderer.setSize(container.offsetWidth, container.offsetHeight);
       container.appendChild(renderer.domElement);
 
+      const axesHelper = new THREE.AxesHelper(30);
+      scene.add(axesHelper);
+
+      const gridXZ = new THREE.GridHelper(30, 30);
+      gridXZ.position.set(0, 0, 0);
+      scene.add(gridXZ);
+
+      const gridXY = new THREE.GridHelper(30, 30);
+      gridXY.position.set(0, 0, 0);
+      gridXY.rotation.x = Math.PI / 2;
+      scene.add(gridXY);
+
       const controls = new OrbitControls(camera, renderer.domElement);
       controls.enableDamping = true;
       controls.enablePan = false;
