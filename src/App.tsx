@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import "./App.css";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { Position } from "./types/types";
 
 function App() {
   const example = [
@@ -19,6 +18,32 @@ function App() {
     -0.23481722, 0.15738128, 0.02105102, 0.32754767, -0.41465446, -0.05276251,
     -0.22304034, 0.1659068, -0.06475556, 0.34843087, -0.45079556, -0.13485262,
     -0.21999559,
+  ];
+
+  const lineIndexes = [
+    [0, 1],
+    [0, 2],
+    [0, 3],
+    [1, 4],
+    [2, 5],
+    [3, 6],
+    [4, 7],
+    [5, 8],
+    [6, 9],
+    [7, 10],
+    [8, 11],
+    [9, 12],
+    [9, 13],
+    [9, 14],
+    [12, 15],
+    [13, 16],
+    [14, 17],
+    [16, 18],
+    [17, 19],
+    [18, 20],
+    [19, 21],
+    [20, 22],
+    [21, 23],
   ];
 
   function extractPoints(data: number[]) {
@@ -92,13 +117,15 @@ function App() {
         scene.add(mesh);
       });
 
-      const start = points[0];
-      const end = points[1];
-      const path = new THREE.LineCurve3(start, end);
-      const geometry = new THREE.TubeGeometry(path, 60, 0.015, 8, false);
-      const material = new THREE.MeshBasicMaterial({ color: 0xff00ff });
-      const line = new THREE.Mesh(geometry, material);
-      scene.add(line);
+      lineIndexes.forEach((lineIndex) => {
+        const start = points[lineIndex[0]];
+        const end = points[lineIndex[1]];
+        const path = new THREE.LineCurve3(start, end);
+        const geometry = new THREE.TubeGeometry(path, 60, 0.015, 8, false);
+        const material = new THREE.MeshBasicMaterial({ color: 0xff00ff });
+        const line = new THREE.Mesh(geometry, material);
+        scene.add(line);
+      });
 
       function animate() {
         requestAnimationFrame(animate);
