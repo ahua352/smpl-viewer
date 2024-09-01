@@ -92,6 +92,17 @@ function App() {
         scene.add(mesh);
       });
 
+      const points2 = [];
+      const start = points[0];
+      const end = points[1];
+      points2.push(new THREE.Vector3(start.x, start.y, start.z));
+      points2.push(new THREE.Vector3(end.x, end.y, end.z));
+      const path = new THREE.LineCurve3(points2[0], points2[1]);
+      const geometry = new THREE.TubeGeometry(path, 60, 0.015, 8, false);
+      const material = new THREE.MeshBasicMaterial({ color: 0xff00ff });
+      const line = new THREE.Mesh(geometry, material);
+      scene.add(line);
+
       function animate() {
         requestAnimationFrame(animate);
         controls.update();
