@@ -75,14 +75,14 @@ function App() {
       renderer.setSize(container.offsetWidth, container.offsetHeight);
       container.appendChild(renderer.domElement);
 
-      const axesHelper = new THREE.AxesHelper(30);
+      const axesHelper = new THREE.AxesHelper(2.5);
       scene.add(axesHelper);
 
-      const gridXZ = new THREE.GridHelper(30, 30);
+      const gridXZ = new THREE.GridHelper(4, 4);
       gridXZ.position.set(0, 0, 0);
       scene.add(gridXZ);
 
-      const gridXY = new THREE.GridHelper(30, 30);
+      const gridXY = new THREE.GridHelper(4, 4);
       gridXY.position.set(0, 0, 0);
       gridXY.rotation.x = Math.PI / 2;
       scene.add(gridXY);
