@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import "./App.css";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import data from "./data/example0.json";
+import data from "./data/dance_data_20_corrected.json";
 import { timer } from "./utils/timer";
 
 function App() {
@@ -48,12 +48,13 @@ function App() {
   useEffect(() => {
     console.log("Inside initial useEffect");
 
-    interface Data {
-      result: number[][];
-      quant: any;
-    }
+    // interface Data {
+    //   result: number[][];
+    //   quant: any;
+    // }
 
-    const { result }: Data = data;
+    // const { result }: Data = data;
+    const result = data;
 
     console.log(result);
 
